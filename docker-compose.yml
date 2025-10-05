@@ -1,0 +1,40 @@
+services:
+  website:
+    image: maximkudryavtsev/cakes-website
+    container_name: website
+    restart: always
+    ports:
+      - "80:3000"
+    environment:
+      DB_USERNAME: root
+      DB_PASSWORD: example
+      DB_URL: mongodb://root:example@stage-mongo:27017/app?authSource=admin
+    depends_on:
+      - mongo
+    networks:
+      - node-network
+
+  mongo:
+    image: mongo:8.0 
+    container_name: stage-mongo
+    restart: always
+    ports:
+      - "27017:27017" # Expose MongoDB on the default port
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+    volumes:
+      - mongo-data:/data/db # Persist MongoDB data
+      - mongo-config:/data/configdb # Persist MongoDB configuration
+    networks:
+      - node-network
+
+volumes:
+  mongo-data:
+    driver: local
+  mongo-config:
+    driver: local
+
+networks:
+  node-network:
+    driver: bridge
