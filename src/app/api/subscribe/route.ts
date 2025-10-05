@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
-import {connectDB} from '../../../repository/connect';
 import Customer from '../../../repository/models/customer';
+import dbConnect from "@/repository/connect";
 
 
 export async function POST(request: NextRequest) {
@@ -13,6 +13,8 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ message: "Internal server error" }, { status: 500 });
   }
 
+  await dbConnect();
+
   try {
     const newCustomer = new Customer({
       email,
@@ -22,6 +24,7 @@ export async function POST(request: NextRequest) {
     });
     await newCustomer.save();
   } catch (error) {
+    console.log(error);
     return NextResponse.json({ message: 'Error', error }, { status: 200 });  
   }
 

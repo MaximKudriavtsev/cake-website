@@ -1,12 +1,12 @@
 import { About, Blog, Gallery, Home, Newsletter, Person, Social, Work } from "@/types";
-import { Line, Logo, Row, Text } from "@once-ui-system/core";
+import { Line, Row, Text } from "@once-ui-system/core";
 
 const person: Person = {
   firstName: "Ольга",
   lastName: "Крапивина",
-  name: `Ольга Крапивина`,
+  name: "Ольга Крапивина",
   role: "Шеф-кондитер",
-  avatar: "/images/avatar.jpg",
+  avatar: "https://storage.yandexcloud.net/olya-website/images/avatar.jpg",
   email: "example@gmail.com",
   location: "Europe/Moscow", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
   languages: [], // optional: Leave the array empty if you don't want to display languages
@@ -283,52 +283,52 @@ const gallery: Gallery = {
   path: "/gallery",
   label: "Галерея",
   title: `Галерея работ – ${person.name}`,
-  description: `Коллекция работ шеф-кондитера Ольги Крапивиной`,
+  description: 'Коллекция работ шеф-кондитера Ольги Крапивиной',
   // Images by https://lorant.one
   // These are placeholder images, replace with your own
   images: [
     {
-      src: "/images/cakes/cake-1.jpg",
+      src: "https://storage.yandexcloud.net/olya-website/images/cake-1.jpg",
       alt: "image",
       orientation: "vertical",
     },
     {
-      src: "/images/cakes/cake-2.jpg",
+      src: "https://storage.yandexcloud.net/olya-website/images/cake-2.jpg",
       alt: "image",
       orientation: "vertical",
     },
     {
-      src: "/images/cakes/cake-3.jpg",
+      src: "https://storage.yandexcloud.net/olya-website/images/cake-3.jpg",
       alt: "image",
       orientation: "vertical",
     },
     {
-      src: "/images/cakes/cake-4.jpg",
+      src: "https://storage.yandexcloud.net/olya-website/images/cake-4.jpg",
       alt: "image",
       orientation: "vertical",
     },
     {
-      src: "/images/cakes/cake-5.jpg",
+      src: "https://storage.yandexcloud.net/olya-website/images/cake-5.jpg",
       alt: "image",
       orientation: "vertical",
     },
     {
-      src: "/images/cakes/cake-6.jpg",
+      src: "https://storage.yandexcloud.net/olya-website/images/cake-6.jpg",
       alt: "image",
       orientation: "vertical",
     },
     {
-      src: "/images/cakes/cake-7.jpg",
+      src: "https://storage.yandexcloud.net/olya-website/images/cake-7.jpg",
       alt: "image",
       orientation: "vertical",
     },
     {
-      src: "/images/cakes/cake-8.jpg",
+      src: "https://storage.yandexcloud.net/olya-website/images/cake-8.jpg",
       alt: "image",
       orientation: "vertical",
     },
     {
-      src: "/images/cakes/cake-9.jpg",
+      src: "https://storage.yandexcloud.net/olya-website/images/cake-9.jpg",
       alt: "image",
       orientation: "vertical",
     },

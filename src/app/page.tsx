@@ -15,7 +15,6 @@ import { home, about, person, baseURL, routes } from "@/resources";
 import { Mailchimp } from "@/components";
 import { Projects } from "@/components/work/Projects";
 import { Posts } from "@/components/blog/Posts";
-import { connectDB } from "@/repository/connect";
 
 export async function generateMetadata() {
   return Meta.generate({
@@ -28,8 +27,6 @@ export async function generateMetadata() {
 }
 
 export default async function Home() {
-  await connectDB();
-
   return (
     <Column maxWidth="m" gap="xl" paddingY="12" horizontal="center">
       <Schema

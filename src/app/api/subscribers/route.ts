@@ -1,14 +1,19 @@
 import { NextRequest, NextResponse } from "next/server";
 
-import EmailSubscribtion from '../../../repository/models/email-subscribtion';
+import Customer from '../../../repository/models/customer';
+import dbConnect from "@/repository/connect";
 
 export async function GET(request: NextRequest) {
-  let subscribers = [];
+  let customers = [];
+
+  await dbConnect();
+
   try {
-    subscribers = await EmailSubscribtion.find({});
+    customers = await Customer.find({});
   } catch (error) {
+    console.log(error);
     return NextResponse.json({ message: 'Error', error }, { status: 200 });  
   }
 
-  return NextResponse.json({ subscribers }, { status: 200 });
+  return NextResponse.json({ customers }, { status: 200 });
 }
