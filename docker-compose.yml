@@ -29,6 +29,20 @@ services:
     networks:
       - node-network
 
+  telegram:
+    image: telegram-saving-bot
+    container_name: telegram
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      MODE: production
+      DB_USERNAME: root
+      DB_PASSWORD: example
+      DB_URL: mongodb://root:example@stage-mongo:27017/app?authSource=admin
+      TELEGRAM_TOKEN: 8085538207:AAFuowK5rdpJDGggeKeY8sr-U21GbO-8-y8
+    network_mode: host
+
 volumes:
   mongo-data:
     driver: local
