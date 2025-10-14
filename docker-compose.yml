@@ -31,10 +31,8 @@ services:
 
   telegram:
     image: telegram-saving-bot
-    container_name: telegram
+    container_name: telegram-saving-bot
     restart: always
-    ports:
-      - "3000:3000"
     environment:
       MODE: production
       DB_USERNAME: root
