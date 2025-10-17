@@ -2,6 +2,7 @@ services:
   website:
     image: maximkudryavtsev/cakes-website
     platform: "linux/amd64"
+    pull_policy: if_not_present
     build:
       context: .
       platforms:
@@ -45,6 +46,7 @@ services:
   telegram:
     image: telegram-saving-bot
     platform: "linux/amd64"
+    pull_policy: if_not_present
     container_name: telegram-saving-bot
     restart: always
     environment:
