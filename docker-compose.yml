@@ -1,6 +1,8 @@
 services:
   website:
     image: maximkudryavtsev/cakes-website
+    build:
+      context: .
     container_name: website
     restart: always
     ports:
@@ -10,7 +12,8 @@ services:
       DB_PASSWORD: example
       DB_URL: mongodb://root:example@stage-mongo:27017/app?authSource=admin
     depends_on:
-      - mongo
+      mongo:
+        condition: service_healthy
     networks:
       - node-network
 
@@ -23,6 +26,12 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: example
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongosh mongodb://root:example@stage-mongo:27017/app?authSource=admin --quiet
+      interval: 10s
+      timeout: 10s
+      retries: 2
+      start_period: 5s
     volumes:
       - mongo-data:/data/db # Persist MongoDB data
       - mongo-config:/data/configdb # Persist MongoDB configuration
@@ -39,7 +48,13 @@ services:
       DB_PASSWORD: example
       DB_URL: mongodb://root:example@stage-mongo:27017/app?authSource=admin
       TELEGRAM_TOKEN: 8085538207:AAFuowK5rdpJDGggeKeY8sr-U21GbO-8-y8
-    network_mode: host
+    depends_on:
+      mongo:
+        condition: service_healthy
+    ports:
+      - "3000:3000"
+    networks:
+      - node-network
 
 volumes:
   mongo-data:
