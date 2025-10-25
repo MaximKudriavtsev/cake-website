@@ -1,13 +1,12 @@
 services:
   website:
-    image: maximkudryavtsev/cakes-website
+    image: maximkudryavtsev/cakes-website:v1
     platform: "linux/amd64"
     pull_policy: if_not_present
     build:
       context: .
       platforms:
         - "linux/amd64"
-        - "linux/arm64"
     container_name: website
     restart: always
     ports:
@@ -44,7 +43,7 @@ services:
       - node-network
 
   telegram:
-    image: telegram-saving-bot
+    image: telegram-saving-bot:v1
     platform: "linux/amd64"
     pull_policy: if_not_present
     container_name: telegram-saving-bot
